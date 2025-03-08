@@ -3,6 +3,7 @@ import "./App.css";
 import AuthPage from "./pages/Auth/AuthPage";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import VerifyUserPage from "./pages/VerifyUserPage";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         {/* Auth Routes - Public */}
         <Route path="/" element={<AuthPage />} />
+        <Route path="/verify-user" element={<VerifyUserPage />} />
       </Routes>
 
       <ToastContainer />
