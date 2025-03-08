@@ -1,14 +1,18 @@
+import { Route, Routes } from "react-router";
 import "./App.css";
-import { Routes, Route } from "react-router";
 import AuthPage from "./pages/Auth/AuthPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <Routes>
-        {/* Auth Route */}
+        {/* Auth Routes - Public */}
         <Route path="/" element={<AuthPage />} />
       </Routes>
+
+      <ToastContainer />
     </>
   );
 }

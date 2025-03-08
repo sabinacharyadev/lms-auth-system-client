@@ -1,6 +1,9 @@
-import { Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import useForm from "../hooks/useForm";
 import InputField from "./InputField";
+import useLoader from "../hooks/useLoader";
+import { createUser } from "../axios/userAxios";
+import { toast } from "react-toastify";
 
 const initialFormData = {
   name: "",
@@ -16,9 +19,37 @@ const SignupForm = (props) => {
 
   // Form Handling
   const { formData, handleOnChange } = useForm(initialFormData);
+  const { name, email, address, phone, password } = formData;
+
+  // For Loading
+  const { isLoading, startLoading, stopLoading } = useLoader();
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+
+    startLoading();
+    // send api request to create user
+    const result = await createUser({
+      name,
+      email,
+      address,
+      phone,
+      password,
+    });
+    stopLoading();
+
+    // Error Hanlding
+    if (result.status === "error") {
+      return toast.error(result.message);
+    }
+
+    // Success
+    toast.success(result.message);
+    setIsLoginForm(true);
+  };
 
   return (
-    <Form>
+    <Form onSubmit={handleOnSubmit}>
       <h2 className="text-center mb-4">Create an Account</h2>
 
       <InputField
@@ -92,6 +123,10 @@ const SignupForm = (props) => {
           required: true,
         }}
       />
+
+      <Button variant="primary" type="submit" disabled={isLoading}>
+        {isLoading ? <Spinner animation="border" /> : "Sign up"}
+      </Button>
     </Form>
   );
 };
