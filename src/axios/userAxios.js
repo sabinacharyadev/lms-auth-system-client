@@ -25,3 +25,47 @@ export const verifyUser = (userEmail, token) => {
 
   return response;
 };
+
+// Login User
+export const loginUser = (userObj) => {
+  const response = axios
+    .post(`${USER_API_URL}/login`, userObj)
+    .then((res) => res.data)
+    .catch((error) => {
+      console.log(error);
+    });
+
+  return response;
+};
+
+// Private Endpoints
+export const getUser = () => {
+  const response = axios
+    .get(USER_API_URL, {
+      headers: {
+        Authorization: sessionStorage.getItem("accessJWT"),
+      },
+    })
+    .then((res) => res.data)
+    .catch((error) => {
+      console.log(error);
+    });
+
+  return response;
+};
+
+// Private Endpoint
+export const getAccessToKen = () => {
+  const response = axios
+    .get(`${USER_API_URL}/accessjwt`, {
+      headers: {
+        Authorization: localStorage.getItem("refreshJWT"),
+      },
+    })
+    .then((res) => res.data)
+    .catch((error) => {
+      console.log(error);
+    });
+
+  return response;
+};
