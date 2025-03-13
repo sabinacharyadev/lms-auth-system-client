@@ -60,7 +60,7 @@ const LoginForm = () => {
     if (!user?._id) {
       dispatch(autoLoginAction());
     }
-  }, [navigate, user]);
+  }, [dispatch, navigate, user]);
 
   return (
     <Form onSubmit={(e) => handleOnSubmit(e)}>
