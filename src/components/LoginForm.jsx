@@ -7,7 +7,7 @@ import { loginUser } from "../axios/userAxios";
 import { useDispatch, useSelector } from "react-redux";
 import { autoLoginAction, getUserAction } from "../redux/user/userActions";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const initialFormData = {
   email: "",
@@ -52,15 +52,23 @@ const LoginForm = () => {
   // Logic to navigate to another route once user exisit [logged in]
   const navigate = useNavigate();
 
+  // Logic to check from wher user landed into login page
+  const { state } = useLocation();
+  const fromLocation = state?.from ? state.from : "/students/books";
+
   useEffect(() => {
-    if (user?._id) {
-      navigate("/books");
+    if (user?._id && user?.role === "student") {
+      navigate(fromLocation);
+    }
+
+    if (user?._id && user?.role === "admin") {
+      navigate("/admin/dashboard");
     }
 
     if (!user?._id) {
       dispatch(autoLoginAction());
     }
-  }, [dispatch, navigate, user]);
+  }, [navigate, user]);
 
   return (
     <Form onSubmit={(e) => handleOnSubmit(e)}>

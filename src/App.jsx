@@ -4,6 +4,12 @@ import AuthPage from "./pages/Auth/AuthPage";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import VerifyUserPage from "./pages/Auth/VerifyUserPage";
+import AdminPrivateRoute from "./components/AdminPrivateRoute";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminBooksPage from "./pages/Admin/AdminBooksPage";
+import StudentsBooksPage from "./pages/Student/StudentBooksPage";
+import BookDetailsPage from "./pages/Student/BookDetailsPage";
+import StudentLayout from "./layouts/StudentLayout";
 
 function App() {
   return (

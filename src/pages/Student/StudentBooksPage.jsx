@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBooksAction } from "../../redux/book/bookActions";
 import { Col, Row } from "react-bootstrap";
 import BookCard from "../../components/BookCard";
+import { getBooksAction } from "../../redux/book/bookAction";
 
 const StudentsBooksPage = () => {
   const { books } = useSelector((state) => state.book);
