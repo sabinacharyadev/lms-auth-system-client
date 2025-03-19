@@ -46,7 +46,6 @@ export const createBookAction = (bookObj) => async (dispatch) => {
 // update a book
 export const updateBookAction = (bookObj) => async (dispatch) => {
   const result = await updateBook(bookObj);
-
   if (result?.status === "error") {
     return toast.error(result.message);
   }

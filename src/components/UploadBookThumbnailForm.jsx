@@ -2,7 +2,7 @@ import { useState } from "react";
 import InputField from "./InputField";
 import { Button, Form, Stack } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { updateBookAction } from "../redux/book/bookActions";
+import { updateBookAction } from "../redux/book/bookAction";
 
 const UploadBookThumbnailForm = (props) => {
   const { setShowModal, selectedBookId } = props;

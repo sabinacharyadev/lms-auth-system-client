@@ -1,5 +1,5 @@
 import { Offcanvas } from "react-bootstrap";
-import UploadBookImagesForm from "./UploadBookImagesForm";
+import UploadBookThumbnailForm from "./UploadBookThumbnailForm";
 
 const UploadBookThumbnail = (props) => {
   const { showModal, setShowModal, selectedBookId } = props;
@@ -17,7 +17,7 @@ const UploadBookThumbnail = (props) => {
 
       <Offcanvas.Body>
         {/* Form to add thumbnail */}
-        <UploadBookImagesForm
+        <UploadBookThumbnailForm
           setShowModal={setShowModal}
           selectedBookId={selectedBookId}
         />
