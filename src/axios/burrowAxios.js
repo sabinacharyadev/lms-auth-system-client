@@ -29,3 +29,15 @@ export const createBorrow = (borrowObj) => {
 
   return response;
 };
+
+// Update/return Borrow
+export const returnBorrow = (borrowId) => {
+  const response = axios
+    .patch(BORROWS_API_URL, { borrowId }, getAuthHeader())
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+
+  return response;
+};

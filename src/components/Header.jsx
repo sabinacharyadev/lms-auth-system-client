@@ -41,6 +41,15 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
+                  <Dropdown.Item className="fw-bold">
+                    <Link
+                      to="/students/borrowHistory"
+                      className="text-decoration-none text-dark"
+                    >
+                      Burrow History
+                    </Link>
+                  </Dropdown.Item>
+
                   <Dropdown.Item>
                     <Button
                       variant="outline-danger"

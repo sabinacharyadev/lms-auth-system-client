@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./src/redux/user/userSlice";
 import bookReducer from "./src/redux/book/bookSlice";
+import reviewReducer from "./src/redux/review/reviewSlice";
+import userReducer from "./src/redux/user/userSlice";
 import borrowReducer from "./src/redux/burrow/burrowSlice";
 
 const store = configureStore({
@@ -8,6 +9,7 @@ const store = configureStore({
     user: userReducer,
     book: bookReducer,
     borrow: borrowReducer,
+    review: reviewReducer,
   },
 });
 

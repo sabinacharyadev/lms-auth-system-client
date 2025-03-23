@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Button, Image, Stack, Table } from "react-bootstrap";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
+import { getBooksAction } from "../redux/book/bookAction";
 import UploadBookThumbnail from "./UploadBookThumbnailModal";
 import UploadBookImagesModal from "./UploadBookImagesModal";
-import { getBooksAction } from "../redux/book/bookAction";
 
 const BookTable = (props) => {
   const { setShowCreateOrUpdateBookModal, setSelectedBook, selectedBook } =

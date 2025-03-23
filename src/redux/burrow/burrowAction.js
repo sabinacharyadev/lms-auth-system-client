@@ -1,7 +1,11 @@
 import { toast } from "react-toastify";
 import { getBookAction } from "../book/bookAction";
 import { setBorrows } from "./burrowSlice";
-import { createBorrow, getBorrows } from "../../axios/burrowAxios";
+import {
+  createBorrow,
+  getBorrows,
+  returnBorrow,
+} from "../../axios/burrowAxios";
 
 // get user burrows
 export const getBorrowsAction = () => async (dispatch) => {
@@ -26,4 +30,17 @@ export const createBorrowAction = (borrowObj) => async (dispatch) => {
   dispatch(getBorrowsAction(borrowObj.user_id));
   // if burrow is created for a book, fetch book again
   dispatch(getBookAction(borrowObj.book_id));
+};
+
+// update a burrow
+export const returnBorrowAction = (borrowId) => async (dispatch) => {
+  const result = await returnBorrow(borrowId);
+
+  if (result?.status === "error") {
+    return toast.error(result.message);
+  }
+
+  // once a burrow is reutrned, we get book details again
+  toast.success(result.message);
+  dispatch(getBorrowsAction());
 };
